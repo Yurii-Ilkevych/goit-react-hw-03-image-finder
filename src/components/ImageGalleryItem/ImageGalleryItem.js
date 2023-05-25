@@ -6,16 +6,17 @@ import {
 
 const ImageGalleryItem = ({ onToggle, onGetId, hits }) => {
   return hits.map(({ id, webformatURL, tags }) => {
-    return (
-      <ImageGalleryItemLi
+    return ( <a href='##'
         key={id}
         onClick={() => {
           onToggle();
           onGetId(id);
         }}
       >
-        <ImageGalleryItemImage src={webformatURL} alt={tags} />
-      </ImageGalleryItemLi>
+        <ImageGalleryItemLi>
+          <ImageGalleryItemImage src={webformatURL} alt={tags} />
+        </ImageGalleryItemLi>
+      </a>
     );
   });
 };

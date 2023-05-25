@@ -19,16 +19,14 @@ class ImageGallery extends Component {
     photoForModal: null,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+ async componentDidUpdate(prevProps ) {
     const { toggleButton, reset, hundleFetch } = this;
     if (prevProps.searchName !== this.props.searchName) {
-      toggleButton(false);
-      reset();
-      this.setState({ status: 'pending' });
-      setTimeout(() => {
-        hundleFetch();
-      }, 100);
-    }
+     toggleButton(false);
+     await reset();
+     this.setState({ status: 'pending' });
+      hundleFetch();
+     }
   }
 
   hundleFetch = () => {
