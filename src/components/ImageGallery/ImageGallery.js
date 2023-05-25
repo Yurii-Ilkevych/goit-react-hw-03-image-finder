@@ -21,6 +21,7 @@ class ImageGallery extends Component {
 
  async componentDidUpdate(prevProps ) {
     const { toggleButton, reset, hundleFetch } = this;
+
     if (prevProps.searchName !== this.props.searchName) {
      toggleButton(false);
      await reset();
@@ -93,14 +94,12 @@ class ImageGallery extends Component {
     totalHits = 0;
   };
 
-  hundleLoadMore = () => {
-    this.setState(({ page }) => ({
+  hundleLoadMore = async () => {
+    await this.setState(({ page }) => ({
       page: (page += 1),
     }));
 
-    setTimeout(() => {
-      this.hundleFetch();
-    }, 100);
+    this.hundleFetch();
   };
 
   getPhoto = id => {
